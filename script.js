@@ -38,3 +38,16 @@ const displayControllerModule = ((doc, boardMod) => {
         displayBoard
     }
 })(document, boardModule);
+
+const playerFactory = (mark, boardMod) => {
+    this.mark = mark;
+    this.boardMod = boardMod;
+    this.addMark = (pos) => {
+        boardMod.addMark(this.mark, pos);
+    };
+
+    return {
+        mark,
+        addMark
+    }
+}
