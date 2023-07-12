@@ -1,9 +1,11 @@
-const gameBoard = ((doc) => {
+const boardModule = (() => {
     let sqArr = Array(9).fill(null);
 
-    const addMark = (mark, ind) => {
-        if (mark.toLowerCase === "o" || mark.toLowerCase === "x")
-            sqArr[ind] = mark.toLowerCase;
+    const addMark = (mark, pos) => {
+        if (mark.toLowerCase() === "o" || mark.toLowerCase() === "x") {
+            let index = pos - 1;
+            sqArr[index] = mark.toLowerCase();
+        }
     };
 
     const clearBoard = () => {
@@ -19,4 +21,5 @@ const gameBoard = ((doc) => {
         clearBoard,
         getBoardArr
     };
-});
+})();
+
