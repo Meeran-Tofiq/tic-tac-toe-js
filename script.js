@@ -7,6 +7,9 @@ const boardModule = (() => {
     let win = false;
 
     const addMark = (mark, pos) => {
+        if (win === true) {
+            return false;
+        }
         if (mark.toLowerCase() === "o" || mark.toLowerCase() === "x") {
             let x = Math.floor((pos-1) / 3);
             let y = Math.floor((pos-1) % 3);
