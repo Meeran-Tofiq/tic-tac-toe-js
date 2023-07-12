@@ -4,8 +4,12 @@ const boardModule = (() => {
     const addMark = (mark, pos) => {
         if (mark.toLowerCase() === "o" || mark.toLowerCase() === "x") {
             let index = pos - 1;
-            sqArr[index] = mark.toLowerCase();
+            if (sqArr[index] === null) {
+                sqArr[index] = mark.toLowerCase();
+                return true;
+            }
         }
+        return false;
     };
 
     const clearBoard = () => {
