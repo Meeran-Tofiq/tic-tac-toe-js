@@ -23,7 +23,12 @@ const boardModule = (() => {
     };
 
     const clearBoard = () => {
-        sqArr = Array(9).fill(null);
+        sqArr = [
+            [null, null, null],
+            [null, null, null],
+            [null, null, null]
+        ];
+        win = false;
     };
 
     const getBoardArr = () => {
@@ -125,3 +130,11 @@ squares.forEach(element => {
         xTurn = !xTurn;
     });
 });
+
+const clearBt = document.querySelector(".clear");
+clearBt.addEventListener('click', () => {
+    squares.forEach(element => {
+        element.textContent = null;
+    });
+    boardModule.clearBoard();
+})
