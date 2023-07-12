@@ -39,11 +39,11 @@ const displayControllerModule = ((doc, boardMod) => {
     }
 })(document, boardModule);
 
-const playerFactory = (mark, boardMod) => {
-    this.mark = mark;
-    this.boardMod = boardMod;
-    this.addMark = (pos) => {
-        boardMod.addMark(this.mark, pos);
+const playerFactory = (mark) => {
+    mark = mark;
+    addMark = (pos) => {
+        boardModule.addMark(mark, pos);
+        displayControllerModule.displayBoard();
     };
 
     return {
@@ -51,3 +51,6 @@ const playerFactory = (mark, boardMod) => {
         addMark
     }
 }
+
+let playerO = playerFactory("O", boardModule);
+let playerX = playerFactory("X", boardModule);
