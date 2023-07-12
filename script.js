@@ -15,7 +15,7 @@ const boardModule = (() => {
             let y = Math.floor((pos-1) % 3);
             if (sqArr[x][y] === null) {
                 sqArr[x][y] = mark.toLowerCase();
-                checkForWin(mark, x, y);
+                win = checkForWin(mark.toLowerCase(), x, y);
                 return true;
             }
         }
@@ -31,9 +31,31 @@ const boardModule = (() => {
     };
 
     const checkForWin = (mark, x, y) => {
-        if(x % 2 !== 0) {
-
+        for (let i = 0; i < 3; i++) {
+            if (sqArr[x][i] !== mark) {break;}
+            if(i === 2) {return true;}
         }
+
+        for (let i = 0; i < 3; i++) {
+            if (sqArr[i][y] !== mark) {break;}
+            if(i === 2) {return true;}
+        }
+
+        if(x === y) {
+            for (let i = 0; i < 3; i++) {
+                if (sqArr[i][i] !== mark) {break;}
+                if(i === 2) {return true;}
+            }
+        }
+
+        if(x + y == 2){
+            for(let i = 0; i < 3; i++){
+                if(sqArr[i][2-i] !== mark) {break;}
+                if(i === 2){return true;}
+            }
+        }
+
+        return false;
     };
 
     const getWin = () => {
@@ -94,6 +116,10 @@ squares.forEach(element => {
             playerX.addMark(pos);
         } else {
             playerO.addMark(pos)
+        }
+
+        if(boardModule.getWin()) {
+            console.log("YOU WONNNNNNNNNNNNNNNNNNNNNNNN");
         }
 
         xTurn = !xTurn;
