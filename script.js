@@ -1,11 +1,18 @@
 const boardModule = (() => {
-    let sqArr = Array(9).fill(null);
+    let sqArr = [
+        [null, null, null],
+        [null, null, null],
+        [null, null, null]
+    ];
+    let win = false;
 
     const addMark = (mark, pos) => {
         if (mark.toLowerCase() === "o" || mark.toLowerCase() === "x") {
-            let index = pos - 1;
-            if (sqArr[index] === null) {
-                sqArr[index] = mark.toLowerCase();
+            let x = Math.floor((pos-1) / 3);
+            let y = Math.floor((pos-1) % 3);
+            if (sqArr[x][y] === null) {
+                sqArr[x][y] = mark.toLowerCase();
+                checkForWin(mark, x, y);
                 return true;
             }
         }
@@ -20,28 +27,42 @@ const boardModule = (() => {
         return sqArr;
     };
 
+    const checkForWin = (mark, x, y) => {
+        if(x % 2 !== 0) {
+
+        }
+    };
+
+    const getWin = () => {
+        return win;
+    }
+
     return {
         addMark,
         clearBoard,
-        getBoardArr
+        getBoardArr,
+        getWin
     };
 })();
 
-const displayControllerModule = ((doc, boardMod) => {
+const displayControllerModule = ((doc) => {
     const boardArr = Array.from(doc.querySelectorAll(".square"));
 
     const displayBoard = () => {
-        const arr = boardMod.getBoardArr();
-        for (let index = 0; index < arr.length; index++) {
-            const mark = arr[index];
-            boardArr[index].textContent = mark;
+        const arr = boardModule.getBoardArr();
+        for (let x = 0; x < arr.length; x++) {
+            for (let y = 0; y < arr[x].length; y++) {
+                const mark = arr[x][y];
+                const pos = x*3 + y;
+                boardArr[pos].textContent = mark;
+            }
         }
     };
 
     return {
         displayBoard
     }
-})(document, boardModule);
+})(document);
 
 const playerFactory = (mark) => {
     mark = mark;
