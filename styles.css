@@ -34,7 +34,12 @@ body {
     background-color: var(--grey);
     border: 1px solid var(--light-grey);
 
+    display: flex;
+
     padding: 1.2rem;
+    align-items: center;
+    justify-content: center;
+    font-size: 5vw;
 }
 
 .square:hover {
