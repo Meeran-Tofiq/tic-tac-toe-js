@@ -33,13 +33,15 @@ body {
 .board > .square {
     background-color: var(--grey);
     border: 1px solid var(--light-grey);
+
+    padding: 1.2rem;
 }
 
 .square:hover {
     cursor: pointer;
 }
 
-.restart {
+.clear {
     background: none;
     border: none;
 
@@ -47,10 +49,10 @@ body {
     color: var(--light-grey);
 }
 
-.restart:hover {
+.clear:hover {
     cursor: pointer;
 }
 
-.restart:active {
+.clear:active {
     color: var(--grey);
 }
