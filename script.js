@@ -57,5 +57,21 @@ const playerFactory = (mark) => {
     }
 }
 
-let playerO = playerFactory("O", boardModule);
-let playerX = playerFactory("X", boardModule);
+let playerX = playerFactory("X");
+let playerO = playerFactory("O");
+let xTurn = true;
+
+const squares = Array.from(document.querySelectorAll(".square"));
+
+squares.forEach(element => {
+    element.addEventListener("click", () => {
+        const pos = element.id;
+        if(xTurn) {
+            playerX.addMark(pos);
+        } else {
+            playerO.addMark(pos)
+        }
+
+        xTurn = !xTurn;
+    });
+});
