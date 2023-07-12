@@ -46,8 +46,9 @@ const displayControllerModule = ((doc, boardMod) => {
 const playerFactory = (mark) => {
     mark = mark;
     addMark = (pos) => {
-        boardModule.addMark(mark, pos);
+        let completed = boardModule.addMark(mark, pos);
         displayControllerModule.displayBoard();
+        return completed;
     };
 
     return {
