@@ -23,3 +23,18 @@ const boardModule = (() => {
     };
 })();
 
+const displayControllerModule = ((doc, boardMod) => {
+    const boardArr = Array.from(doc.querySelectorAll(".square"));
+
+    const displayBoard = () => {
+        const arr = boardMod.getBoardArr();
+        for (let index = 0; index < arr.length; index++) {
+            const mark = arr[index];
+            boardArr[index].textContent = mark;
+        }
+    };
+
+    return {
+        displayBoard
+    }
+})(document, boardModule);
