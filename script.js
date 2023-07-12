@@ -113,6 +113,7 @@ let playerO = playerFactory("O");
 let xTurn = true;
 
 const squares = Array.from(document.querySelectorAll(".square"));
+const winner = document.querySelector(".winner");
 
 squares.forEach(element => {
     element.addEventListener("click", () => {
@@ -124,7 +125,9 @@ squares.forEach(element => {
         }
 
         if(boardModule.getWin()) {
-            console.log("YOU WONNNNNNNNNNNNNNNNNNNNNNNN");
+            let str = (xTurn ? playerX.mark : playerO.mark);
+            winner.textContent += str;
+            winner.classList.remove("hidden");
         }
 
         xTurn = !xTurn;
@@ -137,4 +140,6 @@ clearBt.addEventListener('click', () => {
         element.textContent = null;
     });
     boardModule.clearBoard();
+    winner.classList.add("hidden");
+    winner.textContent = "The winner is ";
 })

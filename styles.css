@@ -17,6 +17,17 @@ body {
     background-color: var(--dark-grey);
 }
 
+.winner {
+    color: var(--light-grey);
+    font-size: 3rem;
+}
+
+.hidden {
+    background: none;
+    border: none;
+    color: transparent;
+}
+
 .board {
     display: grid;
     grid-template: repeat(3, 1fr) / repeat(3, 1fr);
